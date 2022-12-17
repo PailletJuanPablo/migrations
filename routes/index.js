@@ -1,9 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const path = require('path')
+const models = require('../db/models')
+const Category = models.Category;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', async (req, res, next) => {
+ 
+  // Del modelo categorias, findAll, agregarle su asociación
+  const categories = await Category.findAll(
+    {
+      include: ['products']
+    }
+  );
+  return res.send(categories);
+
+
 });
 
 module.exports = router;
