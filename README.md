@@ -30,3 +30,29 @@ id 2 nombre buzos
 Productos
 
 
+
+# Protección de rutas
+- No permitir acceso a datos que el negocio define como privados
+- Contenido relacionado al usuario logueado
+
+# Middleware de ruta
+
+Proteger contenido para usuarios logueados
+if(!req.user) {
+    return redirect('/login')
+}
+
+- Usuarios no logueados no puedan acceder a ciertas rutas
+- Usuarios logueados
+
+Usuario logueado -> redirigir a perfil
+Usuario no logueado -> redirigir a formulario de login / registro
+
+# Login y registro con Sequelize
+- Definición de rutas y métodos para login, registro, mi perfil
+- Configuración y definición en base de datos de usuarios
+
+- Rutas:
+    - Login
+    - Registro
+    - Mi perfil (protegida)
